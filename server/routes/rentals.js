@@ -45,4 +45,6 @@ router.put(
 
 router.delete("/:id", [auth, isHost], rentalController.deleteRental);
 
+router.post("/search", rentalController.searchRentals);
+
 module.exports = router;

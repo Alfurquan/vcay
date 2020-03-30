@@ -4,8 +4,6 @@ const { Rental } = require("../models/rental");
 const moment = require("moment");
 const _ = require("lodash");
 
-
-
 exports.makeBooking = async (req, res, next) => {
 
     if (_.isEmpty(req.body)) {

@@ -3,6 +3,7 @@ const dotenv = require("dotenv").config();
 const _ = require("lodash");
 const fileHelper = require("../utils/file");
 const NodeGeocoder = require("node-geocoder");
+const moment = require("moment");
 
 exports.createRental = async (req, res, next) => {
   if (!req.files.mainImage)
@@ -174,3 +175,45 @@ exports.deleteRental = async (req, res, next) => {
   await Rental.deleteOne({ _id: req.params.id });
   res.send(rental);
 };
+
+exports.searchRentals = async (req, res, next) => {
+  if (_.isEmpty(req.body)) {
+    return res.status(400).send("Bad request..request body cannot be empty");
+  }
+
+
+  //Validate the dates
+  if (moment(req.body.checkIn) < Date.now() || moment(req.body.checkOut) < Date.now()) {
+    return res.status(400).send("Invalid dates..Select dates in future");
+  }
+
+  if (moment(req.body.checkIn) > moment(req.body.checkOut)) {
+    return res.status(400).send("Invalid Dates...");
+  }
+
+  const checkIn = moment(req.body.checkIn);
+  const checkOut = moment(req.body.checkOut);
+  const city = req.body.city;
+  const noOfRooms = req.body.noOfRooms;
+  const noOfGuests = req.body.noOfGuests;
+
+  const rentals = await Rental.find({
+    bedrooms: noOfRooms,
+    city: city,
+    guests: noOfGuests,
+    reservedDates: {
+      $not: {
+        $elemMatch: {
+          from: { $lt: checkOut }, to: { $gt: checkIn }
+        }
+      }
+    }
+  });
+
+  if (!rentals) {
+    return res.status(404).send("No rentals found");
+  }
+
+  res.send(rentals);
+
+}
