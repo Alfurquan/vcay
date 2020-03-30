@@ -69,7 +69,19 @@ const rentalSchema = new Schema({
       type: Number,
       require: true
     }
-  }
+  },
+  bookings: [
+    {
+      type: Schema.Types.ObjectId,
+      ref: "Booking"
+    }
+  ],
+  reservedDates: [
+    {
+      from: Date,
+      to: Date
+    }
+  ]
 });
 
 validateRental = rental => {

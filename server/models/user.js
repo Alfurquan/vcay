@@ -35,11 +35,15 @@ const userSchema = new Schema({
     enum: ["visitor", "host", "admin"],
     default: "visitor"
   },
+  bookings: [{
+    type: Schema.Types.ObjectId,
+    ref: "Booking"
+  }],
   resetToken: String,
   resetTokenExpiration: Date
 });
 
-userSchema.methods.generateAuthToken = function() {
+userSchema.methods.generateAuthToken = function () {
   const token = jwt.sign(
     {
       _id: this._id,

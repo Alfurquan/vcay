@@ -3,6 +3,7 @@ const path = require("path");
 const { MONGO_URI } = require("./config/dev");
 const users = require("./routes/users");
 const rentals = require("./routes/rentals");
+const bookings = require("./routes/bookings");
 const cors = require("cors");
 const cookieParser = require("cookie-parser");
 const dotenv = require("dotenv").config();
@@ -16,6 +17,7 @@ app.use(cookieParser());
 app.use("/uploads", express.static(path.join(__dirname, "uploads")));
 app.use("/api/users", users);
 app.use("/api/rentals", rentals);
+app.use("/api/bookings", bookings);
 
 //Mongoose connection-------
 mongoose

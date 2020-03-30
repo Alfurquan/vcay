@@ -6,7 +6,8 @@ name : string
 email : string
 password : string
 phone : string
-role : [admin,host,visitor] : default set as visitor
+role : [admin,host,visitor] : default set as visitor,
+bookings : [{ ref : Booking }]
 
 
 RENTAL
@@ -30,7 +31,9 @@ location : {
 bedrooms : number,
 guests : number,
 dailyRate : number,
-createdAt : date
+createdAt : date,
+bookings : [{ ref : Booking }],
+reservedDates : [{ from : , to : }]
 
 BOOKING
 id : mongoose Object ID,
@@ -56,3 +59,50 @@ VISITOR
 --> can book rentals
 --> can cancel bookings
 --> cannot ADD/EDIT/DELETE any rentals
+
+BOOKINGS LOGIC------------------------------------------------->
+
+--> Request body{
+  rentalId,
+  startFrom,
+  EndOn,
+  guests
+}
+
+-->First check if the user requesting the booking is the owner of the rental
+    -->If yes send an error
+    -->If no continue
+
+--->Create a booking object
+--->Find the rental including the bookings array by populating it
+--->Calculate totalAmount by noOfDays * dailyRentalRate
+--->Include totalAmount in the booking object
+--->Validate the booking by the following LOGIC
+
+    Loop through all bookings of the found rental and check for the following:-
+
+    (startAtOfBooking < startAtOfProposedBooking && endAtOfBooking < startAtOfProposedBooking ) ||
+    (endAtOfProposedBooking < endAtOfBooking && endAtOfProposedBooking < startAtOfBooking)
+
+-->If booking valid save the booking
+-->Update Rentals to include the new booking
+-->Update Users to include the new booking
+
+SEARCHING LOGIC--------------------------------------------------------->
+
+---> Request Body{
+  city,
+  startFrom,
+  endOn,
+  noOfRooms,
+  noOfguests
+}
+
+--->Filter rentals by applied params in the req.body
+    --->For city exact match
+    --->For rooms exact match
+    --->For guests return rentals with guests >= requested no of guests
+    --->For dates check the available rentals for those dates
+        Logic for checking---->
+
+        use $elemMatch and $not to check for rentals that are free for that range of dates
