@@ -135,7 +135,7 @@ exports.updateRental = async (req, res, next) => {
   rental.bedrooms = req.body.bedrooms;
   rental.guests = req.body.guests;
   rental.dailyRentalRate = req.body.dailyRentalRate;
-  rental.city = req.body.city;
+  rental.city = req.body.city.toLowerCase();
   rental.state = req.body.state;
   rental.zip = req.body.zip;
   if (rental.address !== req.body.address) {
@@ -193,7 +193,7 @@ exports.searchRentals = async (req, res, next) => {
 
   const checkIn = moment(req.body.checkIn);
   const checkOut = moment(req.body.checkOut);
-  const city = req.body.city;
+  const city = req.body.city.toLowerCase();
   const noOfRooms = req.body.noOfRooms;
   const noOfGuests = req.body.noOfGuests;
 
