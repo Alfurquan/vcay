@@ -1,5 +1,5 @@
 import React from "react";
-import Aux from "../Aux/aux";
+import Aux from "../Hoc/hoc";
 import NavBar from "../../components/Navigation/NavBar/Navbar";
 
 const Layout = props => {

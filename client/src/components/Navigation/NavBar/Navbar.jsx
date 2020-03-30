@@ -2,7 +2,7 @@ import React from "react";
 import "./NavBar.css";
 import { NavLink } from "react-router-dom";
 import Navlink from "../NavLink/Navlink";
-import Aux from "../../../Hoc/Aux/aux";
+import Aux from "../../../Hoc/Hoc/hoc";
 
 const NavBar = props => {
   const user = props.user;
