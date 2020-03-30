@@ -1,0 +1,104 @@
+.cover {
+  width: 100%;
+  height: 600px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-size: cover;
+  background-image: linear-gradient(
+      transparent,
+      transparent,
+      rgba(0, 0, 0, 0.5),
+      rgba(0, 0, 0, 0.6)
+    ),
+    url("https://a0.muscache.com/4ea/air/v2/pictures/9d08d356-59b9-4ac4-9f41-5b9c13c2b211.jpg?t=r:w1440-h960-sfit,e:fwebp-c75)");
+}
+
+.content {
+  text-align: center;
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 190px;
+  padding: 20px 0px;
+  border-radius: 10px;
+  color: #f1f1f1;
+  /* background-color: rgba(0, 0, 0, 0.5); */
+  margin-top: 50px;
+  letter-spacing: 1px;
+}
+
+.content h2 {
+  font-size: 40px;
+  padding: 20px;
+  font-weight: 800;
+}
+
+.content a {
+  width: 250px;
+  font-weight: 400;
+  font-size: 20px;
+}
+
+.summary h3 {
+  font-weight: 800;
+  font-size: 28px;
+}
+
+.summary p {
+  font-size: 16px !important;
+  font-weight: 400 !important;
+  line-height: 1.75em !important;
+  color: #484848 !important;
+}
+
+.hosting-steps h1 {
+  font-size: 44px;
+  font-weight: 1000;
+}
+
+.steps h5 {
+  font-weight: 800;
+}
+
+.steps p {
+  margin: 0px;
+}
+
+@media (max-width: 600px) {
+  .cover {
+    width: 100%;
+    height: 300px;
+  }
+  .content {
+    width: 100%;
+  }
+  .content h2 {
+    font-size: 30px;
+    font-weight: 600;
+  }
+  .content a {
+    width: 200px;
+    font-size: 14px;
+    font-weight: 400;
+  }
+  .content .host-link {
+    padding: 5px;
+  }
+
+  .summary h3 {
+    font-weight: 600;
+    font-size: 22px;
+    padding-top: 10px;
+  }
+  .summary p {
+    font-size: 14px;
+    font-weight: 200;
+    line-height: 1.5em !important;
+  }
+  .hosting-steps h1 {
+    font-size: 30px;
+    font-weight: 600;
+  }
+}

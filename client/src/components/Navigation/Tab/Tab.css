@@ -1,0 +1,32 @@
+.tab-list-item {
+  display: inline-block;
+  list-style: none;
+  margin: 0px 10px;
+  width: 150px;
+  font-weight: 600;
+  text-align: center;
+  border-radius: 5px;
+  background-color: #f8f8f8;
+  border: 0.5px solid #ccc;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  padding: 0.5rem 0.75rem;
+}
+
+.tab-list-active {
+  background-color: #ff891e;
+  color: #fff;
+  border-width: 1px 1px 1px 1px;
+}
+
+.tab-list-item:hover {
+  background-color: #ff891e;
+  color: #fff;
+}
+
+@media (max-width: 600px) {
+  .tab-list-item {
+    width: fit-content;
+    padding: 10px;
+  }
+}

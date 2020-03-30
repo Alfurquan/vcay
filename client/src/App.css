@@ -1,0 +1,53 @@
+body {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  background-color: #fff !important;
+  font-size: 0.875rem;
+  font-weight: 400;
+  line-height: 1.5;
+  color: #212529;
+  font-family: "Oxygen", sans-serif !important;
+}
+
+.text-main {
+  color: #484848;
+}
+
+.main-header {
+  font-weight: 900;
+}
+
+.flex {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.small-header {
+  font-size: 22px;
+  font-weight: 800;
+  line-height: 1.25em;
+  color: #484848;
+}
+
+.deep-para {
+  font-size: 16px;
+  font-weight: 400;
+  color: #484848;
+  line-height: 1.444;
+}
+
+input:focus,
+textarea:focus {
+  border: 1px solid #ced4da !important;
+}
+
+@media (max-width: 600px) {
+  .deep-para {
+    font-size: 14px;
+  }
+  .small-header {
+    font-size: 20px;
+  }
+}

@@ -1,0 +1,36 @@
+Component design and Layout ------>
+
+APP Component --->
+    -->Layout Component
+        --->Navbar Component
+        --->TopBar Component
+        --->Main Content
+            --->Other children Component
+        --->Footer Component
+
+
+Hosts and visitors --->
+        -->Host
+            -->All components and contianers for Hosts
+            --> URL \host\
+            --> URL \host\rentals --> Add a rental
+            --> URL \dashboard  --> show all his rentals and rental details like bookings made etc..
+                                --> From here on he can also edit or delete a rental
+        -->visitors
+            -->All components and containers for visitors        
+
+
+Authentication and Authorization Flow ---->
+
+1)Send username and password to Login
+2)Server validates username and password and sets a httponly cookie to hold the JWT
+3)The client (React and Redux) maintains a state in the redux store to keep track of The
+logged in user. The client gets this info once the user gets logged in.
+4)client store the role,name,id of the user in the redux state
+5)client sends the token in the cookie to access protected routes.
+6)Once the JWT expires the server sends a 500 error indicating that the JWT is not valid
+7)This error is catched by the client and it redirects the user to login page and logs the user out
+
+How to check on react side if user is still logged in
+    
+    --->Fire up a request on app load to backend to see if the user is still logged in

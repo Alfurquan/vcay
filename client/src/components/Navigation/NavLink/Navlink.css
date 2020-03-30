@@ -1,0 +1,33 @@
+.nav-link {
+  font-weight: 400;
+  color: #121212 !important;
+  transition: color 0.3s;
+  text-transform: uppercase;
+}
+.nav-link:hover,
+.nav-link:active,
+.nav-link.active {
+  color: #ff891e !important;
+}
+
+.nav-link::after {
+  content: "";
+  display: block;
+  width: 0;
+  height: 2px;
+  background: #ff891e;
+  transition: width 0.3s;
+}
+
+@media (min-width: 992px) {
+  .nav-link {
+    padding: 27px 0px 10px 0px !important;
+    margin: 0 10px;
+  }
+  .nav-link:hover::after {
+    width: 100%;
+  }
+  .nav-link.active::after {
+    width: 100%;
+  }
+}

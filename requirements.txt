@@ -1,0 +1,58 @@
+Models ----->
+
+USER
+id : mongoose object ID
+name : string
+email : string
+password : string
+phone : string
+role : [admin,host,visitor] : default set as visitor
+
+
+RENTAL
+id : mongoose Object ID
+title : string,
+description : string,
+ownerId : ref User (host user)
+mainImage : string,
+subImages : [string],
+address : {
+            street : string,
+            city : string,
+            state : string,
+            zipcode : string,
+            country : string
+          },
+location : {
+            latitude: number,
+            longitude : number
+            }
+bedrooms : number,
+guests : number,
+dailyRate : number,
+createdAt : date
+
+BOOKING
+id : mongoose Object ID,
+userId : ref user
+rentalId : ref rental,
+bookingFrom : date,
+bookingTo : date
+totalAmount : number
+
+
+USERS AND THEIR ROLES ---->
+
+ADMIN 
+--> Can ADD/EDIT/DELETE any rentals,user and bookings
+
+HOSTS
+--> can ADD rentals
+--> can EDIT/DELETE only their own rentals
+--> can view bookings for their own rentals
+
+VISITOR
+--> can search rentals
+--> can book rentals
+--> can cancel bookings
+--> cannot ADD/EDIT/DELETE any rentals

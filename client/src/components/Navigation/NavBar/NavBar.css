@@ -1,0 +1,11 @@
+nav {
+  box-shadow: 0 3px 12px -6px rgba(0, 0, 0, 0.4);
+  padding: 10px 0px !important;
+  background-color: #fff;
+}
+
+@media (max-width: 600px) {
+  nav {
+    padding: 10px 20px !important;
+  }
+}
